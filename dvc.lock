@@ -34,12 +34,12 @@ stages:
       size: 1408
     params:
       params.yaml:
-        cv: 4
+        cv: 5
         solver: liblinear
     outs:
     - path: final_model.sav
       md5: 7b973198e7f14f04c546e3167d3ec922
       size: 223
     - path: metrics.json
-      md5: ce9234c2c4cb37c7926fd89ade390530
-      size: 88
+      md5: 5a0c41369fb24ac176368bf63fd8622e
+      size: 102
