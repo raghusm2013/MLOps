@@ -1,43 +1,45 @@
-get_data:
-  cmd: python get_data.py
-  deps:
-  - path: get_data.py
-    md5: 4c94d8c93927d9f4f56f99fb943236e8
-    size: 166
-  outs:
-  - path: haberman.csv
-    md5: 867c77f6a99090e1af91510211f8b68c
-    size: 3103
-process_data:
-  cmd: python process_data.py
-  deps:
-  - path: haberman.csv
-    md5: 867c77f6a99090e1af91510211f8b68c
-    size: 3103
-  - path: process_data.py
-    md5: 60333117072711b3a152aaa42565bbac
-    size: 379
-  outs:
-  - path: haberman_processed.csv
-    md5: f4187b5e2d213d442bde7b3274cb9f68
-    size: 4545
-train_data:
-  cmd: python train_data.py
-  deps:
-  - path: haberman_processed.csv
-    md5: f4187b5e2d213d442bde7b3274cb9f68
-    size: 4545
-  - path: train_data.py
-    md5: 1946a3fa319477cb4ba126b73edf0658
-    size: 1408
-  params:
-    params.yaml:
-      cv: 5
-      solver: liblinear
-  outs:
-  - path: final_model.sav
-    md5: 9dea20b3b6ef1af445348ada4b6ba474
-    size: 200
-  - path: metrics.json
-    md5: 5a0c41369fb24ac176368bf63fd8622e
-    size: 102
+schema: '2.0'
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - path: get_data.py
+      md5: 1d0caa41dc6ce9f7f0cd274bb2ede21e
+      size: 168
+    outs:
+    - path: haberman.csv
+      md5: 867c77f6a99090e1af91510211f8b68c
+      size: 3103
+  process_data:
+    cmd: python process_data.py
+    deps:
+    - path: haberman.csv
+      md5: 867c77f6a99090e1af91510211f8b68c
+      size: 3103
+    - path: process_data.py
+      md5: 60333117072711b3a152aaa42565bbac
+      size: 379
+    outs:
+    - path: haberman_processed.csv
+      md5: f4187b5e2d213d442bde7b3274cb9f68
+      size: 4545
+  train_data:
+    cmd: python train_data.py
+    deps:
+    - path: haberman_processed.csv
+      md5: f4187b5e2d213d442bde7b3274cb9f68
+      size: 4545
+    - path: train_data.py
+      md5: 1946a3fa319477cb4ba126b73edf0658
+      size: 1408
+    params:
+      params.yaml:
+        cv: 4
+        solver: liblinear
+    outs:
+    - path: final_model.sav
+      md5: 7b973198e7f14f04c546e3167d3ec922
+      size: 223
+    - path: metrics.json
+      md5: ce9234c2c4cb37c7926fd89ade390530
+      size: 88
